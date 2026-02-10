@@ -11,7 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: terraform/dev
+        working-directory: terraform/
 
     steps:
       - uses: actions/checkout@v4
@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: terraform-plan
-          path: terraform/dev/plan.txt
+          path: terraform/plan.txt
 
       - name: Create PR to main
         uses: peter-evans/create-pull-request@v8.1.0
