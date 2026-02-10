@@ -40,7 +40,7 @@ jobs:
       - name: Create PR to main
         uses: peter-evans/create-pull-request@v8.1.0
         with:
-          branch: dev
+          branch: terraform-plan-dev
           base: master
           title: "Terraform Dev Plan → Prod"
           body: |
