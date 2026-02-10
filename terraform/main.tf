@@ -96,7 +96,7 @@ resource "aws_nat_gateway" "nat_gw" {
   subnet_id     = aws_subnet.public_subnets[0].id  # Placing NAT GW in the first public subnet
 
   tags = {
-    Name = "main-nat-gw"
+    Name = "main-nat-gateway"
   }
 
   depends_on = [aws_internet_gateway.main_igw]
