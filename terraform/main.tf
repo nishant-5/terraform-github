@@ -101,3 +101,37 @@ resource "aws_nat_gateway" "nat_gw" {
 
   depends_on = [aws_internet_gateway.main_igw]
 }
+
+resource "aws_security_group" "public_sg"{
+    vpc_id = aws_vpc.main.id 
+    name = "public_sg"
+}
+
+resource "aws_security_group_rule" "public80_ingress"{
+    security_group_id = aws_security_group.public_sg.id 
+    type = "ingress"
+    from_port = 80
+    to_port = 80
+    protocol = "TCP"
+    cidr_blocks= ["0.0.0.0/0"]
+}
+
+resource "aws_security_group_rule" "public22_ingress"{
+    security_group_id = aws_security_group.public_sg.id 
+    type = "ingress"
+    from_port = 22
+    to_port = 22
+    protocol = "TCP"
+    cidr_blocks= ["0.0.0.0/0"]
+}
+
+
+resource "aws_security_group_rule" "public_egress"{
+    security_group_id = aws_security_group.public_sg.id 
+    type = "egress"
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+}
+
